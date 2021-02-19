@@ -1,0 +1,28 @@
+{
+  "hulkStoreApp": {
+    "product": {
+      "home": {
+        "title": "Productos",
+        "createLabel": "Crear nuevo Producto",
+        "createOrEditLabel": "Crear o editar Producto",
+        "notFound": "Ningún Producto encontrado"
+      },
+      "created": "Un nuevo Producto ha sido creado con el identificador {{ param }}",
+      "updated": "Un Producto ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Producto ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar el Producto {{ id }}?"
+      },
+      "detail": {
+        "title": "Producto"
+      },
+      "name": "Nombre",
+      "description": "Descripción",
+      "enabled": "Habilitado",
+      "image": "Imagen",
+      "regularPrice": "Precio Regular",
+      "salePrice": "Precio de Venta",
+      "category": "Categoría"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "hulkStoreApp": {
+    "kardex": {
+      "home": {
+        "title": "Kardexes",
+        "createLabel": "Create a new Kardex",
+        "createOrEditLabel": "Create or edit a Kardex",
+        "notFound": "No Kardexes found"
+      },
+      "created": "A new Kardex is created with identifier {{ param }}",
+      "updated": "A Kardex is updated with identifier {{ param }}",
+      "deleted": "A Kardex is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Kardex {{ id }}?"
+      },
+      "detail": {
+        "title": "Kardex"
+      },
+      "type": "Type",
+      "quantity": "Quantity",
+      "comments": "Comments",
+      "regularPrice": "Regular Price",
+      "salePrice": "Sale Price",
+      "currentStock": "Current Stock",
+      "product": "Product"
+    }
+  }
+}

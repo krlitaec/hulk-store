@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="hulkStoreApp.kardex.home.title">Kardexes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-kardex" [routerLink]="['/kardex/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="hulkStoreApp.kardex.home.createLabel">
+            Create a new Kardex
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="kardexes?.length === 0">
+        <span jhiTranslate="hulkStoreApp.kardex.home.notFound">No kardexes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="kardexes && kardexes.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="hulkStoreApp.kardex.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="quantity"><span jhiTranslate="hulkStoreApp.kardex.quantity">Quantity</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="comments"><span jhiTranslate="hulkStoreApp.kardex.comments">Comments</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="regularPrice"><span jhiTranslate="hulkStoreApp.kardex.regularPrice">Regular Price</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="salePrice"><span jhiTranslate="hulkStoreApp.kardex.salePrice">Sale Price</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="currentStock"><span jhiTranslate="hulkStoreApp.kardex.currentStock">Current Stock</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="product.id"><span jhiTranslate="hulkStoreApp.kardex.product">Product</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let kardex of kardexes ;trackBy: trackId">
+                    <td><a [routerLink]="['/kardex', kardex.id, 'view']">{{ kardex.id }}</a></td>
+                    <td>{{ kardex.type }}</td>
+                    <td>{{ kardex.quantity }}</td>
+                    <td>{{ kardex.comments }}</td>
+                    <td>{{ kardex.regularPrice }}</td>
+                    <td>{{ kardex.salePrice }}</td>
+                    <td>{{ kardex.currentStock }}</td>
+                    <td>
+                        <div *ngIf="kardex.product">
+                            <a [routerLink]="['/product', kardex.product?.id, 'view']" >{{ kardex.product?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/kardex', kardex.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/kardex', kardex.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(kardex)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="kardexes && kardexes.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

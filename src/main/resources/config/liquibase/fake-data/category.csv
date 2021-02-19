@@ -1,0 +1,7 @@
+id;name;code;description;enabled;image;image_content_type
+1;Camisetas;CAM;Camisetas;true;../fake-data/blob/hipster.png;image/png
+2;Vasos;VAS;Vasos;true;../fake-data/blob/hipster.png;image/png
+3;Comics;COM;Comics;true;../fake-data/blob/hipster.png;image/png
+4;Juguetes;JUG;Juguetes;true;../fake-data/blob/hipster.png;image/png
+5;Accesorios;ACC;Accesorios;true;../fake-data/blob/hipster.png;image/png
+6;Alternativos;ALT;Alternativos;true;../fake-data/blob/hipster.png;image/png

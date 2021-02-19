@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="kardex">
+            <h2><span jhiTranslate="hulkStoreApp.kardex.detail.title">Kardex</span> {{ kardex.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hulkStoreApp.kardex.type">Type</span></dt>
+                <dd>
+                    <span>{{ kardex.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.kardex.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ kardex.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.kardex.comments">Comments</span></dt>
+                <dd>
+                    <span>{{ kardex.comments }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.kardex.regularPrice">Regular Price</span></dt>
+                <dd>
+                    <span>{{ kardex.regularPrice }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.kardex.salePrice">Sale Price</span></dt>
+                <dd>
+                    <span>{{ kardex.salePrice }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.kardex.currentStock">Current Stock</span></dt>
+                <dd>
+                    <span>{{ kardex.currentStock }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.kardex.product">Product</span></dt>
+                <dd>
+                    <div *ngIf="kardex.product">
+                        <a [routerLink]="['/product', kardex.product?.id, 'view']">{{ kardex.product?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/kardex', kardex.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
