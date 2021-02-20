@@ -1,0 +1,26 @@
+{
+  "hulkStoreApp": {
+    "detailInvoice": {
+      "home": {
+        "title": "Detail Invoices",
+        "createLabel": "Create a new Detail Invoice",
+        "createOrEditLabel": "Create or edit a Detail Invoice",
+        "notFound": "No Detail Invoices found"
+      },
+      "created": "A new Detail Invoice is created with identifier {{ param }}",
+      "updated": "A Detail Invoice is updated with identifier {{ param }}",
+      "deleted": "A Detail Invoice is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Detail Invoice {{ id }}?"
+      },
+      "detail": {
+        "title": "Detail Invoice"
+      },
+      "quantity": "Quantity",
+      "price": "Price",
+      "total": "Total",
+      "product": "Product",
+      "invoice": "Invoice"
+    }
+  }
+}

@@ -16,6 +16,18 @@ import { RouterModule } from '@angular/router';
         path: 'kardex',
         loadChildren: () => import('./kardex/kardex.module').then(m => m.HulkStoreKardexModule),
       },
+      {
+        path: 'payment',
+        loadChildren: () => import('./payment/payment.module').then(m => m.HulkStorePaymentModule),
+      },
+      {
+        path: 'invoice',
+        loadChildren: () => import('./invoice/invoice.module').then(m => m.HulkStoreInvoiceModule),
+      },
+      {
+        path: 'detail-invoice',
+        loadChildren: () => import('./detail-invoice/detail-invoice.module').then(m => m.HulkStoreDetailInvoiceModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

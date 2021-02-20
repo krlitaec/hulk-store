@@ -56,6 +56,12 @@ public class Product implements Serializable {
     @JsonIgnoreProperties(value = "products", allowSetters = true)
     private Category category;
 
+    @Transient
+    private boolean added = false;
+
+    @Transient
+    private Integer quantity;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -199,5 +205,21 @@ public class Product implements Serializable {
             ", regularPrice=" + getRegularPrice() +
             ", salePrice=" + getSalePrice() +
             "}";
+    }
+
+    public boolean isAdded() {
+        return added;
+    }
+
+    public void setAdded(boolean added) {
+        this.added = added;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

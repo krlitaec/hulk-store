@@ -1,0 +1,24 @@
+{
+  "hulkStoreApp": {
+    "payment": {
+      "home": {
+        "title": "Pagos",
+        "createLabel": "Crear nuevo Pago",
+        "createOrEditLabel": "Crear o editar Pago",
+        "notFound": "Ningún Pago encontrado"
+      },
+      "created": "Un nuevo Pago ha sido creado con el identificador {{ param }}",
+      "updated": "Un Pago ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Pago ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar el Pago {{ id }}?"
+      },
+      "detail": {
+        "title": "Pago"
+      },
+      "paymentType": "Tipo de Pago",
+      "value": "Valor",
+      "file": "Archivo"
+    }
+  }
+}

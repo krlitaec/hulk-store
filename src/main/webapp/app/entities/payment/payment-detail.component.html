@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="payment">
+            <h2><span jhiTranslate="hulkStoreApp.payment.detail.title">Payment</span> {{ payment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hulkStoreApp.payment.paymentType">Payment Type</span></dt>
+                <dd>
+                    <span>{{ payment.paymentType }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.payment.value">Value</span></dt>
+                <dd>
+                    <span>{{ payment.value }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.payment.file">File</span></dt>
+                <dd>
+                    <div *ngIf="payment.file">
+                        <a (click)="openFile(payment.fileContentType, payment.file)" jhiTranslate="entity.action.open">open</a>
+                        {{ payment.fileContentType }}, {{ byteSize(payment.file) }}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/payment', payment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,8 @@
 package ec.com.todo1.service;
 
+import ec.com.todo1.domain.Kardex;
 import ec.com.todo1.domain.Product;
+import ec.com.todo1.repository.KardexRepository;
 import ec.com.todo1.repository.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +25,11 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository) {
+    private final KardexRepository kardexRepository;
+
+    public ProductService(ProductRepository productRepository, KardexRepository kardexRepository) {
         this.productRepository = productRepository;
+        this.kardexRepository = kardexRepository;
     }
 
     /**
@@ -35,6 +40,28 @@ public class ProductService {
      */
     public Product save(Product product) {
         log.debug("Request to save Product : {}", product);
+        if (product.getQuantity() != null) {
+            Boolean create = false;
+            Kardex kardex = kardexRepository.findLastByProduct(product.getId());
+            if (kardex != null) {
+                if (!kardex.getCurrentStock().equals(product.getQuantity())) {
+                    create = true;
+                }
+            } else {
+                create = true;
+            }
+            if (create.equals(true)) {
+                Kardex nuevoKardex = new Kardex();
+                nuevoKardex.setProduct(product);
+                nuevoKardex.setType("I");
+                nuevoKardex.setComments("Saving Product");
+                nuevoKardex.setQuantity(product.getQuantity());
+                nuevoKardex.setRegularPrice(product.getRegularPrice());
+                nuevoKardex.setSalePrice(product.getSalePrice());
+                nuevoKardex.setCurrentStock(product.getQuantity());
+                kardexRepository.save(nuevoKardex);
+            }
+        }
         return productRepository.save(product);
     }
 

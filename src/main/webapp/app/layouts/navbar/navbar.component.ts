@@ -9,6 +9,9 @@ import { AccountService } from 'app/core/auth/account.service';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { LoginService } from 'app/core/login/login.service';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
+import { IInvoice, Invoice } from 'app/shared/model/invoice.model';
+import { InvoiceService } from 'app/entities/invoice/invoice.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'jhi-navbar',
@@ -21,6 +24,9 @@ export class NavbarComponent implements OnInit {
   languages = LANGUAGES;
   swaggerEnabled?: boolean;
   version: string;
+  itemsQuantity?: any;
+  routeEdit: string;
+  invoice?: IInvoice;
 
   constructor(
     private loginService: LoginService,
@@ -28,10 +34,37 @@ export class NavbarComponent implements OnInit {
     private sessionStorage: SessionStorageService,
     private accountService: AccountService,
     private loginModalService: LoginModalService,
+    protected invoiceService: InvoiceService,
     private profileService: ProfileService,
     private router: Router
   ) {
     this.version = VERSION ? (VERSION.toLowerCase().startsWith('v') ? VERSION : 'v' + VERSION) : '';
+
+    this.routeEdit = '/invoice/1051/edit';
+
+    this.loadInvoice();
+  }
+
+  loadInvoice(): void {
+    this.invoiceService.findActive().subscribe(
+      (res: HttpResponse<IInvoice>) => {
+        this.onSuccessInvoiceActive(res.body || new Invoice());
+      },
+      () => this.onErrorInvoiceActive()
+    );
+  }
+  protected onSuccessInvoiceActive(data: IInvoice): void {
+    this.invoice = data;
+    this.itemsQuantity = 0;
+    if (this.invoice.detailInvoices) {
+      this.itemsQuantity = this.invoice.detailInvoices.length;
+    }
+    this.routeEdit = '/invoice/' + this.invoice.id + '/edit';
+  }
+
+  protected onErrorInvoiceActive(): void {
+    this.itemsQuantity = undefined;
+    this.routeEdit = '/';
   }
 
   ngOnInit(): void {

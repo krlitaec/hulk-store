@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="detailInvoice">
+            <h2><span jhiTranslate="hulkStoreApp.detailInvoice.detail.title">Detail Invoice</span> {{ detailInvoice.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hulkStoreApp.detailInvoice.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ detailInvoice.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.detailInvoice.price">Price</span></dt>
+                <dd>
+                    <span>{{ detailInvoice.price }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.detailInvoice.total">Total</span></dt>
+                <dd>
+                    <span>{{ detailInvoice.total }}</span>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.detailInvoice.product">Product</span></dt>
+                <dd>
+                    <div *ngIf="detailInvoice.product">
+                        <a [routerLink]="['/product', detailInvoice.product?.id, 'view']">{{ detailInvoice.product?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="hulkStoreApp.detailInvoice.invoice">Invoice</span></dt>
+                <dd>
+                    <div *ngIf="detailInvoice.invoice">
+                        <a [routerLink]="['/invoice', detailInvoice.invoice?.id, 'view']">{{ detailInvoice.invoice?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/detail-invoice', detailInvoice.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

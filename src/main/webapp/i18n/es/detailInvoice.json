@@ -1,0 +1,26 @@
+{
+  "hulkStoreApp": {
+    "detailInvoice": {
+      "home": {
+        "title": "Detalles de Factura",
+        "createLabel": "Crear nuevo Detalle de Factura",
+        "createOrEditLabel": "Crear o editar Detalle de Factura",
+        "notFound": "Ningún Detalle de Factura encontrado"
+      },
+      "created": "Un nuevo Detalle de Factura ha sido creado con el identificador {{ param }}",
+      "updated": "Un Detalle de Factura ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Detalle de Factura ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar el Detalle de Factura {{ id }}?"
+      },
+      "detail": {
+        "title": "Detalle de Factura"
+      },
+      "quantity": "Cantidad",
+      "price": "Precio",
+      "total": "Total",
+      "product": "Producto",
+      "invoice": "Factura"
+    }
+  }
+}

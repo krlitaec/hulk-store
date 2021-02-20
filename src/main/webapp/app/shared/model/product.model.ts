@@ -10,6 +10,8 @@ export interface IProduct {
   regularPrice?: number;
   salePrice?: number;
   category?: ICategory;
+  added?: boolean;
+  quantity?: number;
 }
 
 export class Product implements IProduct {
@@ -22,8 +24,12 @@ export class Product implements IProduct {
     public image?: any,
     public regularPrice?: number,
     public salePrice?: number,
-    public category?: ICategory
+    public category?: ICategory,
+    public added?: boolean,
+    public quantity?: number
   ) {
     this.enabled = this.enabled || false;
+    this.added = false;
+    this.quantity = 1;
   }
 }

@@ -25,7 +25,6 @@
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="name"><span jhiTranslate="hulkStoreApp.product.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="description"><span jhiTranslate="hulkStoreApp.product.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="enabled"><span jhiTranslate="hulkStoreApp.product.enabled">Enabled</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="image"><span jhiTranslate="hulkStoreApp.product.image">Image</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="regularPrice"><span jhiTranslate="hulkStoreApp.product.regularPrice">Regular Price</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="salePrice"><span jhiTranslate="hulkStoreApp.product.salePrice">Sale Price</span> <fa-icon icon="sort"></fa-icon></th>
@@ -38,7 +37,6 @@
                     <td><a [routerLink]="['/product', product.id, 'view']">{{ product.id }}</a></td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>
-                    <td>{{ product.enabled }}</td>
                     <td>
                         <a *ngIf="product.image" (click)="openFile(product.imageContentType, product.image)" jhiTranslate="entity.action.open">open</a>
                         <span *ngIf="product.image">{{ product.imageContentType }}, {{ byteSize(product.image) }}</span>

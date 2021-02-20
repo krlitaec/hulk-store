@@ -30,6 +30,7 @@ export class ProductUpdateComponent implements OnInit {
     regularPrice: [null, [Validators.required]],
     salePrice: [null, [Validators.required]],
     category: [],
+    quantity: [null, [Validators.required]],
   });
 
   constructor(
@@ -60,6 +61,7 @@ export class ProductUpdateComponent implements OnInit {
       regularPrice: product.regularPrice,
       salePrice: product.salePrice,
       category: product.category,
+      quantity: product.quantity,
     });
   }
 
@@ -105,6 +107,7 @@ export class ProductUpdateComponent implements OnInit {
       regularPrice: this.editForm.get(['regularPrice'])!.value,
       salePrice: this.editForm.get(['salePrice'])!.value,
       category: this.editForm.get(['category'])!.value,
+      quantity: this.editForm.get(['quantity'])!.value,
     };
   }
 
